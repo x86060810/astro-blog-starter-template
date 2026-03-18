@@ -1,62 +1,210 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<Layout
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage="/blog-placeholder-about.jpg"
->
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-	</p>
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <BaseHead title="关于我 - 夏士博的网站" description="夏士博的个人简介，展示技术专长和职业历程" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  </head>
+  <body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="bg-gradient-to-r from-blue-500 to-purple-600 shadow-lg">
+      <div class="container mx-auto px-6 py-3">
+        <div class="flex items-center justify-between">
+          <div class="text-white font-bold text-xl">
+            夏士博的网站
+          </div>
+          <div class="hidden md:flex space-x-8">
+            <a href="/" class="text-white hover:text-gray-200">首页</a>
+            <a href="/blog" class="text-white hover:text-gray-200">文章</a>
+            <a href="/about" class="text-white hover:text-gray-200">关于我</a>
+          </div>
+          <div class="md:hidden">
+            <button class="mobile-menu-button text-white focus:outline-none">
+              <i class="fas fa-bars text-2xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- 移动端菜单 -->
+      <div class="mobile-menu hidden md:hidden bg-blue-700">
+        <a href="/" class="block py-2 px-4 text-white hover:bg-blue-600">首页</a>
+        <a href="/blog" class="block py-2 px-4 text-white hover:bg-blue-600">文章</a>
+        <a href="/about" class="block py-2 px-4 text-white hover:bg-blue-600">关于我</a>
+      </div>
+    </nav>
 
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non
-		tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non
-		blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-		massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-		Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra
-		massa massa ultricies mi.
-	</p>
+    <!-- 主要内容 -->
+    <main class="container mx-auto px-6 py-8">
+      <section class="mb-12">
+        <div class="bg-white rounded-lg shadow-md p-8">
+          <!-- 页面标题 -->
+          <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">关于我</h1>
+            <p class="text-gray-600">一人自治管理有限公司</p>
+          </div>
+          
+          <!-- 核心优势 -->
+          <div class="mb-12">
+            <h2 class="text-2xl font-semibold text-blue-600 mb-6 border-b border-blue-200 pb-2">
+              <i class="fas fa-star mr-2"></i>核心优势
+            </h2>
+            <div class="space-y-4">
+              <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
+                <h3 class="text-lg font-medium text-blue-700 mb-2">
+                  <i class="fas fa-laptop-code mr-2"></i>复合型技术专家
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                  16 年 + 全栈 IT 运维经验，精通企业级 IT 基础设施全生命周期管理，从桌面终端运维到云服务器集群部署，具备企业网络环境的架构设计与故障排查能力。
+                </p>
+              </div>
+              <div class="bg-purple-50 p-6 rounded-lg border-l-4 border-purple-500">
+                <h3 class="text-lg font-medium text-purple-700 mb-2">
+                  <i class="fas fa-chart-line mr-2"></i>商业价值创造者
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                  独特的「技术 + 销售」双向思维，擅长将技术方案转化为浅显语言，曾为中小企业至世界 500 强企业提供高 ROI 的 IT 运维服务。
+                </p>
+              </div>
+              <div class="bg-yellow-50 p-6 rounded-lg border-l-4 border-yellow-500">
+                <h3 class="text-lg font-medium text-yellow-700 mb-2">
+                  <i class="fas fa-users mr-2"></i>自媒体运营师
+                </h3>
+                <p class="text-gray-700 leading-relaxed">
+                  独立运营微信公众号，从 0 起号实现 10000 粉丝精准增长，擅长内容创作、渠道引流与用户运营，打造高粘性粉丝社群，实现账号流量与影响力双提升。
+                </p>
+              </div>
+            </div>
+          </div>
 
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl
-		suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet
-		nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae
-		turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-		dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat
-		semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-		vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-		facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam
-		vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla
-		urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-	</p>
+          <!-- 职业里程碑 -->
+          <div class="mb-12">
+            <h2 class="text-2xl font-semibold text-blue-600 mb-6 border-b border-blue-200 pb-2">
+              <i class="fas fa-trophy mr-2"></i>职业里程碑
+            </h2>
+            <div class="space-y-6">
+              <!-- 全球化 IT 服务 -->
+              <div class="bg-gradient-to-r from-blue-50 to-white p-6 rounded-lg">
+                <h3 class="text-xl font-medium text-gray-700 mb-4 flex items-center">
+                  <i class="fas fa-globe text-blue-600 mr-3"></i>全球化 IT 服务
+                </h3>
+                <ul class="space-y-3 pl-5 list-disc text-gray-700">
+                  <li>主导跨国企业亚洲 IT 架构标准化项目，实现全球分支机构的网络合规性 100% 达标</li>
+                  <li>设计混合云部署方案为某外企降低 35% 运维成本</li>
+                </ul>
+              </div>
+              
+              <!-- 技术赋能销售 -->
+              <div class="bg-gradient-to-r from-purple-50 to-white p-6 rounded-lg">
+                <h3 class="text-xl font-medium text-gray-700 mb-4 flex items-center">
+                  <i class="fas fa-handshake text-purple-600 mr-3"></i>技术赋能销售
+                </h3>
+                <ul class="space-y-3 pl-5 list-disc text-gray-700">
+                  <li>创建「技术可行性 - 商业价值」双维度评估体系，助力销售效率提升 40%</li>
+                  <li>部署 ERP 系统将客户分类进行突破，节约成本约 60%</li>
+                </ul>
+              </div>
+              
+              <!-- 中小企业数字化转型 -->
+              <div class="bg-gradient-to-r from-green-50 to-white p-6 rounded-lg">
+                <h3 class="text-xl font-medium text-gray-700 mb-4 flex items-center">
+                  <i class="fas fa-rocket text-green-600 mr-3"></i>中小企业数字化转型
+                </h3>
+                <ul class="space-y-3 pl-5 list-disc text-gray-700">
+                  <li>为中小企业设计阶梯式 IT 升级路线，平均节省初期投入 50 万元</li>
+                  <li>创新「IT 健康度评估模型」</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 技术矩阵 -->
+          <div>
+            <h2 class="text-2xl font-semibold text-blue-600 mb-6 border-b border-blue-200 pb-2">
+              <i class="fas fa-th mr-2"></i>技术矩阵
+            </h2>
+            <div class="overflow-x-auto">
+              <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm">
+                <thead>
+                  <tr class="bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+                    <th class="py-4 px-4 border-b text-left font-semibold">
+                      <i class="fas fa-server mr-2"></i>基础设施
+                    </th>
+                    <th class="py-4 px-4 border-b text-left font-semibold">
+                      <i class="fas fa-network-wired mr-2"></i>网络架构
+                    </th>
+                    <th class="py-4 px-4 border-b text-left font-semibold">
+                      <i class="fas fa-coins mr-2"></i>成本优化
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="hover:bg-gray-50">
+                    <td class="py-3 px-4 border-b">• Windows/Linux 混合运维</td>
+                    <td class="py-3 px-4 border-b">• Cisco/JHUAWEI 网络方案</td>
+                    <td class="py-3 px-4 border-b">• 云成本 TCO 分析模型</td>
+                  </tr>
+                  <tr class="hover:bg-gray-50">
+                    <td class="py-3 px-4 border-b">• 自动化运维体系搭建</td>
+                    <td class="py-3 px-4 border-b">• SD-WAN 跨国部署</td>
+                    <td class="py-3 px-4 border-b">• ITIL 服务流程再造</td>
+                  </tr>
+                  <tr class="hover:bg-gray-50">
+                    <td class="py-3 px-4 border-b">• 计算机软硬件 ERP 维护</td>
+                    <td class="py-3 px-4 border-b">• 零信任+DLP 项目落地</td>
+                    <td class="py-3 px-4 border-b">• 软件版权管理</td>
+                  </tr>
+                  <tr class="hover:bg-gray-50">
+                    <td class="py-3 px-4 border-b">• 机房动环 / 灾备体系建设</td>
+                    <td class="py-3 px-4 border-b">• 跨域网络互联互通规划</td>
+                    <td class="py-3 px-4 border-b">• 软硬件资产全生命周期成本管控</td>
+                  </tr>
+                  <tr class="hover:bg-gray-50">
+                    <td class="py-3 px-4 border-b">• 终端设备标准化管理</td>
+                    <td class="py-3 px-4 border-b">• 网络安全纵深防御搭建</td>
+                    <td class="py-3 px-4 border-b">• 开源技术替代与成本节约</td>
+                  </tr>
+                  <tr class="hover:bg-gray-50">
+                    <td class="py-3 px-4 border-b">• 监控告警体系落地</td>
+                    <td class="py-3 px-4 border-b"></td>
+                    <td class="py-3 px-4 border-b"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
 
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper
-		viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc
-		scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur
-		gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-		pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-		blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id
-		cursus metus aliquam eleifend mi.
-	</p>
+      <!-- 导航按钮 -->
+      <section class="mb-12">
+        <div class="flex justify-center space-x-4">
+          <a href="/" class="bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 transition flex items-center">
+            <i class="fas fa-home mr-2"></i>返回首页
+          </a>
+          <a href="/blog" class="bg-purple-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-600 transition flex items-center">
+            <i class="fas fa-book mr-2"></i>查看文章
+          </a>
+        </div>
+      </section>
+    </main>
 
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta
-		nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam
-		tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
-		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-	</p>
-</Layout>
+    <!-- 页脚 -->
+    <Footer />
+
+    <script>
+      // 移动端菜单切换
+      const mobileMenuButton = document.querySelector('.mobile-menu-button');
+      const mobileMenu = document.querySelector('.mobile-menu');
+      
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    </script>
+  </body>
+</html>

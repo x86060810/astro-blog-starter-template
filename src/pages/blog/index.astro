@@ -1,6 +1,5 @@
 ---
 import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
@@ -12,100 +11,111 @@ const posts = (await getCollection('blog')).sort(
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									<img width={720} height={360} src={post.data.heroImage} alt="" />
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
-		</main>
-		<Footer />
-	</body>
+<html lang="zh-CN">
+  <head>
+    <BaseHead title="文章 - 夏士博的网站" description={SITE_DESCRIPTION} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  </head>
+  <body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="bg-gradient-to-r from-blue-500 to-purple-600 shadow-lg">
+      <div class="container mx-auto px-6 py-3">
+        <div class="flex items-center justify-between">
+          <div class="text-white font-bold text-xl">
+            夏士博的网站
+          </div>
+          <div class="hidden md:flex space-x-8">
+            <a href="/" class="text-white hover:text-gray-200">首页</a>
+            <a href="/blog" class="text-white hover:text-gray-200">文章</a>
+            <a href="/about" class="text-white hover:text-gray-200">关于我</a>
+          </div>
+          <div class="md:hidden">
+            <button class="mobile-menu-button text-white focus:outline-none">
+              <i class="fas fa-bars text-2xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- 移动端菜单 -->
+      <div class="mobile-menu hidden md:hidden bg-blue-700">
+        <a href="/" class="block py-2 px-4 text-white hover:bg-blue-600">首页</a>
+        <a href="/blog" class="block py-2 px-4 text-white hover:bg-blue-600">文章</a>
+        <a href="/about" class="block py-2 px-4 text-white hover:bg-blue-600">关于我</a>
+      </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="container mx-auto px-6 py-8">
+      <!-- 页面标题 -->
+      <section class="mb-8">
+        <div class="text-center">
+          <h1 class="text-3xl font-bold text-gray-800 mb-2">
+            <i class="fas fa-book mr-2 text-blue-600"></i>文章
+          </h1>
+          <p class="text-gray-600">技术分享与见解</p>
+        </div>
+      </section>
+
+      <!-- 文章列表 -->
+      <section class="mb-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {
+            posts.map((post) => (
+              <a href={`/blog/${post.id}/`} class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition block">
+                {post.data.heroImage && (
+                  <img src={post.data.heroImage} alt={post.data.title} class="w-full h-48 object-cover" />
+                )}
+                <div class="p-6">
+                  <h3 class="text-xl font-semibold text-gray-800 mb-2 hover:text-blue-600 transition">
+                    {post.data.title}
+                  </h3>
+                  <p class="text-gray-600 text-sm mb-4">
+                    <i class="far fa-calendar mr-2"></i>
+                    <FormattedDate date={post.data.pubDate} />
+                  </p>
+                  <p class="text-gray-700 line-clamp-3">
+                    {post.data.description || '点击阅读更多...'}
+                  </p>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+        
+        {posts.length === 0 && (
+          <div class="text-center py-12">
+            <i class="fas fa-inbox text-6xl text-gray-300 mb-4"></i>
+            <p class="text-gray-500 text-lg">暂无文章</p>
+          </div>
+        )}
+      </section>
+
+      <!-- 导航按钮 -->
+      <section class="mb-12">
+        <div class="flex justify-center space-x-4">
+          <a href="/" class="bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 transition flex items-center">
+            <i class="fas fa-home mr-2"></i>返回首页
+          </a>
+          <a href="/about" class="bg-purple-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-600 transition flex items-center">
+            <i class="fas fa-user mr-2"></i>关于我
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- 页脚 -->
+    <Footer />
+
+    <script>
+      // 移动端菜单切换
+      const mobileMenuButton = document.querySelector('.mobile-menu-button');
+      const mobileMenu = document.querySelector('.mobile-menu');
+      
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    </script>
+  </body>
 </html>
