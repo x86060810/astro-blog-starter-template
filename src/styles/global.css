@@ -235,3 +235,45 @@ hr {
 .mobile-menu:not(.hidden) {
 	display: block;
 }
+
+/* —— 移动端排版适配（≤720px） —— */
+@media (max-width: 720px) {
+	body {
+		font-size: 16px;
+		line-height: 1.75;
+	}
+	h1 {
+		font-size: 1.75rem;
+		line-height: 1.35;
+	}
+	h2 {
+		font-size: 1.45rem;
+		line-height: 1.35;
+	}
+	h3 {
+		font-size: 1.2rem;
+	}
+	h4 {
+		font-size: 1.1rem;
+	}
+	h5 {
+		font-size: 1rem;
+	}
+	main {
+		width: 100%;
+		max-width: 100%;
+		padding: 0.5rem;
+	}
+	blockquote {
+		font-size: 1.05em;
+		padding-left: 14px;
+	}
+	pre {
+		padding: 1em;
+		font-size: 0.85rem;
+		overflow-x: auto;
+	}
+	.prose p {
+		margin-bottom: 1.4em;
+	}
+}
